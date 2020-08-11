@@ -53,9 +53,9 @@ async def fetch(ctx, _tag=None):
             main_str += f"This tag was added by **{i['author']}**"
             await ctx.send(main_str)
             break
-            return None
 
-    await ctx.send(f"No tag was found named `{_tag}`")
+    else:
+        await ctx.send(f"No tag was found named `{_tag}`")
 
 
 

@@ -31,9 +31,11 @@ async def tag(ctx, _tag=None, *,_info=None):
         if _tag.lower() == i["tag"]:
             await ctx.send("Tag is already present, replacing the old one.")
             i["info"] = _info
-            return None
+            break
 
-    ALL_TAGS.append({"author" : ctx.author, "tag" : _tag.lower(), "info" : _info})
+    else:
+        ALL_TAGS.append({"author" : ctx.author, "tag" : _tag.lower(), "info" : _info})
+        await ctx.send(f"Added a tag named `{_tag}`")
 
 
 

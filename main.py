@@ -21,7 +21,7 @@ async def on_ready():
 @commands.has_any_role(MODS_ROLE_ID)
 async def tag(ctx, _tag=None, *,_info=None):
     if _tag == None or _info == None:
-        ctx.send(f"Provide all parameters.\nCorrect format : `{PREFIX}tag tag_name info`\n\n"\
+        await ctx.send(f"Provide all parameters.\nCorrect format : `{PREFIX}tag tag_name info`\n\n"\
                  f"Example :\n```\n{PREFIX}tag monday maths - https://meet.google.com/xxx-xx-xxx\n"\
                  "phy - https://meet.google.com/xxx-xx-xxx```")
 
@@ -29,7 +29,7 @@ async def tag(ctx, _tag=None, *,_info=None):
 
     for i in ALL_TAGS:
         if _tag.lower() == i["tag"]:
-            ctx.send("Tag is already present, replacing the old one.")
+            await ctx.send("Tag is already present, replacing the old one.")
             i["info"] = _info
             return None
 
@@ -40,7 +40,7 @@ async def tag(ctx, _tag=None, *,_info=None):
 @client.command()
 async def fetch(ctx, _tag=None):
     if _tag == None:
-        ctx.send(f"Provide the name of the tag you want to fetch.\nCorrect format : `{PREFIX}fetch tag_name`\n\n"\
+        await ctx.send(f"Provide the name of the tag you want to fetch.\nCorrect format : `{PREFIX}fetch tag_name`\n\n"\
                  f"Example :\n```\n{PREFIX}fetch monday```")
 
         return None
@@ -51,11 +51,11 @@ async def fetch(ctx, _tag=None):
             main_str = f"**__Tag Name : {i['tag']}__**\n"
             main_str += f"{i['info']}\n\n"
             main_str += f"This tag was added by **{i['author']}**"
-            ctx.send(main_str)
+            await ctx.send(main_str)
             break
             return None
 
-    ctx.send(f"No tag was found named `{_tag}`")
+    await ctx.send(f"No tag was found named `{_tag}`")
 
 
 
@@ -66,6 +66,6 @@ async def help(ctx):
      f"`{PREFIX}tag tag_name info` - Use to create new tags and also to replace the old ones."\
      "(only Mods can use this)"
 
-    ctx.send(main_str)
+    await ctx.send(main_str)
 
 client.run(TOKEN)

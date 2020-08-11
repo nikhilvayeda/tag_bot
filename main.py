@@ -31,6 +31,7 @@ async def tag(ctx, _tag=None, *,_info=None):
         if _tag.lower() == i["tag"]:
             await ctx.send("Tag is already present, replacing the old one.")
             i["info"] = _info
+            i["author"] = ctx.author
             break
 
     else:

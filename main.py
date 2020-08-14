@@ -71,6 +71,28 @@ async def fetch(ctx, _tag=None):
         await ctx.send("[Error] `fetch` is a server only command.")
 
 
+@client.command()
+@commands.has_any_role(MODS_ROLE_ID)
+async def delete(ctx, _tag=None):
+    if ctx.guild != None:
+        if _tag == None:
+            await ctx.send(f"Provide the name of the tag you want to delete.\nCorrect format : `{PREFIX}delete tag_name`\n\n"\
+                     f"Example :\n```\n{PREFIX}delete monday```")
+            return None
+
+        for i in ALL_TAGS:
+            if _tag.lower() == i['tag']:
+                main_str = f"__**Tag Bot**__"
+                main_str += f"Deleted the tag named **{i['tag']}**\n"
+                main_str += f"with content :\n**{i['info']}**\n\n"
+                main_str += f"This tag was added by **{i['author']}**"
+                await ctx.send(main_str)
+                ALL_TAGS.remove(i)
+                break
+
+        else:
+            await ctx.send(f"No tag found named `{_tag}`.")
+
 
 @client.command()
 async def help(ctx):

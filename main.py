@@ -89,7 +89,6 @@ async def keepAlive():
 
 @client.event
 async def on_message(message):
-    print(message.content.split())
     if "<@!742780894619893881>" in message.content.split() or client.user.mention in message.content.split():
         if not message.author.bot:
             await message.channel.send(f"{message.author.mention}\nUse `{PREFIX}help` to see more options.")

@@ -82,7 +82,7 @@ async def delete(ctx, _tag=None):
 
         for i in ALL_TAGS:
             if _tag.lower() == i['tag']:
-                main_str = f"__**Tag Bot**__"
+                main_str = f"__**Tag Bot**__\n"
                 main_str += f"Deleted the tag named **{i['tag']}**\n"
                 main_str += f"with content :\n**{i['info']}**\n\n"
                 main_str += f"This tag was added by **{i['author']}**"

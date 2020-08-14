@@ -97,10 +97,10 @@ async def delete(ctx, _tag=None):
 @client.command()
 async def help(ctx):
     main_str = "**__Tag Bot__**\n"\
-     f"`{PREFIX}fetch tag_name` - Use to fetch tags.\n"\
-     f"`{PREFIX}tag tag_name info` - Use to create new tags and also to replace the old ones."\
-     "(only Mods can use this)"\
-     f"`{PREFIX}delete tag_name` - deletes the tag"
+     f"1.`{PREFIX}fetch tag_name` - Use to fetch tags.\n"\
+     f"2.`{PREFIX}tag tag_name info` - Use to create new tags and also to replace the old ones."\
+     "(only Mods can use this)\n"\
+     f"3.`{PREFIX}delete tag_name` - deletes the tag"
 
     await ctx.send(main_str)
 
